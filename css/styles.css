@@ -648,7 +648,7 @@ img {
 
 .modal-window-overlay.is-hidden.modal-window {
   transition: opacity var(--slow) var(--animation),
-  visibility var(--slow) var(--animation);
+    visibility var(--slow) var(--animation);
 }
 
 .modal-btn {
