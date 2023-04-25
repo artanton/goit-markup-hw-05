@@ -6,6 +6,7 @@
   --accent-text-color: #404bbf;
   --portfolo-btn-border: #e7e9fc;
   --btn-background-color: #4d5ae5;
+  --accent-btn-text-color: #f4f4fd;
   --slow: 250ms;
   --animation: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -145,7 +146,7 @@ img {
 
   transition: color var(--slow) var(--animation);
 }
-
+.current,
 .header-link:hover,
 .header-link:focus {
   color: var(--accent-text-color);
@@ -165,9 +166,8 @@ img {
   transition: background-color var(--slow) var(--animation);
 }
 
-.current.header-link::after,
-.header-link:hover::after,
-.header-link:focus::after {
+.current.header-link::after
+{
   background-color: var(--accent-text-color);
 }
 
@@ -354,14 +354,16 @@ img {
   height: 40px;
   border-radius: 50%;
   background-color: var(--btn-background-color);
-  color: #f4f4fd;
+  color: var(--accent-btn-text-color);
 
-  transition: background-color var(--slow) var(--animation);
+  transition: background-color var(--slow) var(--animation),
+  border-color var(--slow) var(--animation);
 }
 
 .social-link-team:hover,
 .social-link-team:focus {
   background-color: var(--accent-text-color);
+  border-color: var(--accent-text-color);
 }
 
 .social-icon {
@@ -402,13 +404,13 @@ img {
   color: #8e8f99;
 
   transition: color var(--slow) var(--animation),
-    border var(--slow) var(--animation);
+  border-color var(--slow) var(--animation);
 }
 
 .customers-link:hover,
 .customers-link:focus {
   color: var(--accent-text-color);
-  border: 1px solid var(--accent-text-color);
+  border-color: var(--accent-text-color);
 }
 
 .customer-icon {
@@ -441,7 +443,7 @@ img {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: #f4f4fd;
+  color: var(--accent-btn-text-color);
   width: 264px;
   display: block;
 }
@@ -466,16 +468,18 @@ img {
 }
 
 .social-link-footer {
-  transition: background-color var(--slow) var(--animation);
+  
+  transition: background-color var(--slow) var(--animation),
+  border-color var(--slow) var(--animation);
 }
 
-.social-link-footer:hover {
-  background-color: #31d0aa;
-}
-
+.social-link-footer:hover,
 .social-link-footer:focus {
   background-color: #31d0aa;
+  border-color: #31d0aa;
 }
+
+
 
 /* portfolio */
 
@@ -509,7 +513,7 @@ img {
   letter-spacing: 0.04em;
 
   color: var(--btn-background-color);
-  background-color: #f4f4fd;
+  background-color: var(--accent-btn-text-color);
 
   border: 1px solid var(--portfolo-btn-border);
   border-radius: 4px;
@@ -518,13 +522,14 @@ img {
 
   transition: color var(--slow) var(--animation),
     background-color var(--slow) var(--animation),
-    box-shadow var(--slow) var(--animation);
+    box-shadow var(--slow) var(--animation),
+    border-color  var(--slow) var(--animation);
 }
 
 .filters-btn:hover {
   background-color: var(--accent-text-color);
   color: white;
-  border: 1px solid transparent;
+  border: var(--accent-text-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
@@ -568,12 +573,14 @@ img {
   position: relative;
   display: block;
   overflow: hidden;
+  
 }
 
 .overlay-portfolio {
   position: absolute;
   transform: translateY(100%);
-
+  
+  padding: 40px 32px;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -581,22 +588,21 @@ img {
 
   background-color: var(--btn-background-color);
 
-  transition-duration: var(--slow);
-  transition-timing-function: var(--animation);
+  transition: transform var(--slow) var(--animation);
+  
 }
 
 .portfolio-slide-text {
-  padding: 40px 32px;
+  
 
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
 
-  color: #f4f4fd;
+  color: var(--accent-btn-text-color);
 
-  display: block;
-}
+  }
 
 .portfolio-row-link {
   display: block;
@@ -617,11 +623,15 @@ img {
 .modal-window-overlay {
   position: fixed;
   top: 0px;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
+  left: 0px;    
+  width: 100%;
+  height: 100%; 
+   
+  opacity: 1;
+    
   background-color: rgba(46, 47, 66, 0.4);
-
+  
+  
   transition: opacity var(--slow) var(--animation),
     visibility var(--slow) var(--animation);
 }
@@ -636,14 +646,19 @@ img {
   width: 408px;
   min-height: 576px;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   left: 50%;
   top: 50%;
-  transform: translateX(-204px) translateY(-288px);
+  transform: translateX(-50%) translateY(-50%) scale(1);
   background-color: #fcfcfc;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  
+  
+  transition: opacity var(--slow) var(--animation),
+  visibility var(--slow) var(--animation);
+
 }
 
 .modal-window-overlay.is-hidden.modal-window {
@@ -652,10 +667,18 @@ img {
 }
 
 .modal-btn {
-  margin: 24px 24px auto auto;
-  padding: 8px;
+ 
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
   font-size: 0px;
+
   display: block;
+  justify-content: center;
+  align-items: center;
+
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   background-color: #e7e9fc;
